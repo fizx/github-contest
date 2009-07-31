@@ -36,7 +36,7 @@ public class Contest {
 		}
 
 		public int compareTo(Count o) {
-			return count > o.count ? 1 : 0;
+			return count > o.count ? -1 : 1;
 		}
 	}
 
@@ -55,8 +55,11 @@ public class Contest {
 			PriorityQueue<Count> queue = new PriorityQueue<Count>();
 			queue.addAll(this.values());
 			ArrayList<Integer> out = new ArrayList<Integer>(k);
+			// System.err.println("--------");
 			for (int i = 0; i < k && queue.size() > 0; i++) {
-				out.add(queue.remove().key);
+				Count count = queue.remove();
+				// System.err.println(count.key + ":" + count.count);
+				out.add(count.key);
 			}
 			return out;
 		}
